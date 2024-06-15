@@ -1,0 +1,46 @@
+digraph TheoryOfChange {
+  // Graph attributes
+  size="8,11";  // Set the size to A4 dimensions (in inches)
+  rankdir=TB;   // Arrange nodes from top to bottom
+  node [shape=box, style=rounded, fontname="Helvetica", fontsize=22];  // Adjust font size
+
+  // Problem Statement
+  problem_statement [label="Problem Statement\nAcute food insecurity and malnutrition threaten survival,\nwell-being, and livelihoods.", shape=ellipse, style=filled, fillcolor=lightcoral];
+
+  // Overall Objective
+  overall_objective [label="Overall Objective\nReduce food insecurity and enhance resilience\nin East and Southern Africa.", shape=ellipse, style=filled, fillcolor=lightyellow];
+
+  // Operational Areas
+  food_security [label="Food Security & Nutrition\nAccess to food, malnutrition prevention,\nclimate-resilient systems", color=lightgreen];
+  protection [label="Protection & Psychosocial Support\nEnhanced services for vulnerable groups", color=lightgreen];
+  drr [label="Disaster Risk Reduction & Climate Impact Mitigation\nStrengthened community capacities", color=lightgreen];
+  livelihood [label="Livelihood & Markets\nEmpower households, support markets,\ncommunity-led actions", color=lightgreen];
+
+  // Systems & Approaches
+  systems_approaches [label="Systems & Approaches\nLocalized assistance, cash transfer,\nnexus approaches", color=lightblue];
+
+  // Change Drivers
+  change_drivers [label="Change Drivers\nPeople affected by crises, local governments,\nNGOs, donors", color=lightblue];
+
+  // Barriers
+  barriers [label="Barriers\nPoverty, climate impacts, conflicts, limited capacity", color=lightpink];
+
+  // Connections
+  problem_statement -> overall_objective [label="Addresses"];
+  overall_objective -> food_security [label="Achieves through"];
+  overall_objective -> protection [label="Achieves through"];
+  overall_objective -> drr [label="Achieves through"];
+  overall_objective -> livelihood [label="Achieves through"];
+  food_security -> barriers [color=red, style=dotted];
+  protection -> barriers [color=red, style=dotted];
+  drr -> barriers [color=red, style=dotted];
+  livelihood -> barriers [color=red, style=dotted];
+  food_security -> systems_approaches [label="Implemented with"];
+  protection -> systems_approaches [label="Implemented with"];
+  drr -> systems_approaches [label="Implemented with"];
+  livelihood -> systems_approaches [label="Implemented with"];
+  food_security -> change_drivers [label="Driven by"];
+  protection -> change_drivers [label="Driven by"];
+  drr -> change_drivers [label="Driven by"];
+  livelihood -> change_drivers [label="Driven by"];
+}

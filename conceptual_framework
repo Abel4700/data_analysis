@@ -1,0 +1,29 @@
+// Conceptual Framework for Trend Analysis of Social Work Professionalism
+digraph {
+	A [label="NASW Code of Ethics" fillcolor=lightblue shape=box style="rounded,filled"]
+	B [label="Humanitarian Context" fillcolor=lightblue shape=box style="rounded,filled"]
+	C [label="Capacity of Humanitarian Workers" fillcolor=lightblue shape=box style="rounded,filled"]
+	D [label="Types of Child-Focused Social Work Services" fillcolor=lightyellow shape=ellipse style=filled]
+	E [label="Describing Social Work Services" fillcolor=lightgreen shape=box style="rounded,filled"]
+	F [label="Service Delivery Analysis" fillcolor=lightgreen shape=box style="rounded,filled"]
+	G [label="Trend Analysis" fillcolor=lightgreen shape=box style="rounded,filled"]
+	H [label="Influencing Factors" fillcolor=lightgreen shape=box style="rounded,filled"]
+	I [label="Implications of Trends" fillcolor=lightgreen shape=box style="rounded,filled"]
+	J [label="Understanding Application" fillcolor=lightpink shape=box style="rounded,filled"]
+	K [label="Identifying Service Trends" fillcolor=lightpink shape=box style="rounded,filled"]
+	L [label="Contributing Factors Analysis" fillcolor=lightpink shape=box style="rounded,filled"]
+	M [label="Impact Assessment" fillcolor=lightpink shape=box style="rounded,filled"]
+	A -> D
+	B -> D
+	C -> D
+	D -> E
+	D -> F
+	D -> G
+	D -> H
+	D -> I
+	E -> J
+	F -> K
+	G -> L
+	H -> M
+	I -> M
+}

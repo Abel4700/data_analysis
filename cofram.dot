@@ -1,0 +1,46 @@
+from graphviz import Digraph
+
+dot = Digraph(comment='Conceptual Framework for Trend Analysis of Social Work Professionalism')
+
+# Contextual Considerations
+dot.node('A', 'NASW Code of Ethics')
+dot.node('B', 'Humanitarian Context')
+dot.node('C', 'Capacity of Humanitarian Workers')
+
+# Core Concepts
+dot.node('D', 'Types of Child-Focused Social Work Services')
+
+# Research Objectives
+dot.node('E', 'Describing Social Work Services')
+dot.node('F', 'Service Delivery Analysis')
+dot.node('G', 'Trend Analysis')
+dot.node('H', 'Influencing Factors')
+dot.node('I', 'Implications of Trends')
+
+# Expected Outcomes
+dot.node('J', 'Understanding Application')
+dot.node('K', 'Identifying Service Trends')
+dot.node('L', 'Contributing Factors Analysis')
+dot.node('M', 'Impact Assessment')
+
+# Edges from Contextual Considerations to Core Concepts
+dot.edge('A', 'D')
+dot.edge('B', 'D')
+dot.edge('C', 'D')
+
+# Edges from Core Concepts to Research Objectives
+dot.edge('D', 'E')
+dot.edge('D', 'F')
+dot.edge('D', 'G')
+dot.edge('D', 'H')
+dot.edge('D', 'I')
+
+# Edges from Research Objectives to Expected Outcomes
+dot.edge('E', 'J')
+dot.edge('F', 'K')
+dot.edge('G', 'L')
+dot.edge('H', 'M')
+dot.edge('I', 'M')
+
+# Render the graph
+dot.render('conceptual_framework', format='png', view=True)
