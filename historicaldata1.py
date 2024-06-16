@@ -29,13 +29,54 @@ holt_params = {
     'Livelihood Support for Families': {'alpha': 0.0, 'gamma': 0.0}
 }
 
-arima_params = {
+arima_params_group2 = {
     'Individual Case Management': {'order': (0, 1, 0)},
     'Family Reunification Support': {'order': (0, 1, 0)},
     'Psychosocial Support': {'order': (0, 1, 0)},
     'Alternative Care Arrangement': {'order': (0, 1, 0)},
-    'Community Based CP': {'order': (0, 1, 0)},
+    'Community Based CP': {'order': (0, 1, 0)}
+}
+
+arima_params_group3 = {
     'Shelter Provision': {'order': (0, 0, 0)},
     'WASH': {'order': (0, 0, 0)},
     'Health and Nutrition': {'order': (0, 0, 0)}
 }
+
+# Function to train HOLT model and generate forecast
+def train_holt_model(df, variable, params):
+    model = ExponentialSmoothing(df[variable], trend='add', seasonal=None)
+    model_fit = model.fit(smoothing_level=params['alpha'], smoothing_slope=params['gamma'])
+    forecast = model_fit.forecast(steps=5)
+    return forecast
+
+# Function to train ARIMA model and generate forecast
+def train_arima_model(df, variable, params):
+    model = ARIMA(df[variable], order=params['order'])
+    model_fit = model.fit()
+    forecast = model_fit.forecast(steps=5)
+    return forecast
+
+# Plot historical data and forecasts for each variable separately in groups
+def plot_group(df, group_params, model_type, title):
+    plt.figure(figsize=(14, 10))
+    for variable, params in group_params.items():
+        years = range(2024, 2029)
+        plt.plot(df['Year'], df[variable], label=f'{variable} (Historical)')
+        if model_type == 'HOLT':
+            forecast = train_holt_model(df, variable, params)
+        else:
+            forecast = train_arima_model(df, variable, params)
+        plt.plot(years, forecast, label=f'{variable} ({model_type} Forecast)')
+    plt.title(title)
+    plt.xlabel('Year')
+    plt.ylabel('Mean')
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+# Plot each group separately
+plot_group(df, holt_params, 'HOLT', 'Forecasted Trends for HOLT Model Variables')
+plot_group(df, arima_params_group2, 'ARIMA', 'Forecasted Trends for ARIMA Model Variables (Differencing)')
+plot_group(df, arima_params_group3, 'ARIMA', 'Forecasted Trends for ARIMA Model Variables (No Differencing)')
